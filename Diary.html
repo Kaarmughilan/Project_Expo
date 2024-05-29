@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #89f7fe, #66a6ff);
+            display: flex;
+            flex-direction: column; /* Adjusted to column */
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        header {
+            background: #05060fc3;
+            color: white; /* White text color */
+            padding: 1rem 0;
+            width: 100%; /* Full width */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            width: 500px;
+            margin: auto;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Diary</h1>
+    </header>
+    <div class="container">
+        <div class="content">
+            <h2>Write Your Thoughts</h2>
+            <textarea id="thoughts" placeholder="Write your thoughts here..."></textarea>
+            <h2>Add Images (Optional)</h2>
+            <input type="file" id="imageInput" multiple>
+            <button onclick="saveDiary()">Download</button>
+        </div>
+    </div>
+    <script>
+        function saveDiary() {
+            var thoughts = document.getElementById("thoughts").value;
+            var imageInput = document.getElementById("imageInput");
+            var images = imageInput.files;
+
+            var zip = new JSZip();
+            var imagesFolder = zip.folder("images");
+
+            if (images.length > 0) {
+                var imagePromises = [];
+
+                for (var i = 0; i < images.length; i++) {
+                    var reader = new FileReader();
+                    var file = images[i];
+
+                    imagePromises.push(new Promise((resolve, reject) => {
+                        reader.onload = function(event) {
+                            imagesFolder.file(file.name, event.target.result.split(',')[1], {base64: true});
+                            resolve();
+                        };
+                        reader.readAsDataURL(file);
+                    }));
+                }
+
+                Promise.all(imagePromises).then(() => {
+                    zip.file("diary.txt", thoughts);
+                    zip.generateAsync({type:"blob"})
+                        .then(function(content) {
+                            saveAs(content, "diary.zip");
+                            alert("Your diary with images has been downloaded!");
+                        });
+                });
+            } else {
+                zip.file("diary.txt", thoughts);
+                zip.generateAsync({type:"blob"})
+                    .then(function(content) {
+                        saveAs(content, "diary.zip");
+                        alert("Your diary without images has been downloaded!");
+                    });
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.0/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</body>
+</html>

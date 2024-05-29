@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #89f7fe, #66a6ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .quote-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 80%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        #quote {
+            color: #666;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-container">
+        <h1>Quotes</h1>
+        <p id="quote"></p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const quotes = [
+                "Believe you can and you're halfway there.",
+                "Your only limit is your mind.",
+                "Don't stop until you're proud.",
+                "You are stronger than you think.",
+                "The best time for new beginnings is now.",
+                "You have the power to create change.",
+                "Every day is a second chance.",
+                "The only way to achieve the impossible is to believe it is possible.",
+                "Positive thoughts lead to positive outcomes.",
+                "You are capable of amazing things."
+            ];
+
+            const quoteElement = document.getElementById('quote');
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+
+            quoteElement.textContent = quotes[randomIndex];
+        });
+    </script>
+</body>
+</html>

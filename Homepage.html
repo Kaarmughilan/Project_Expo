@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f5f5; 
+            color: #555;
+        }
+        header {
+            background-color: #4aa3df;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+        }
+        nav {
+            background-color: #3a8ecc;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav li {
+            display: inline; 
+            margin: 0 10px; 
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        section {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+        }
+        .module, .survey, .daily-quotes, .Hot-Penning, .diary {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px; 
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            width: 300px; 
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .module:hover, .survey:hover, .daily-quotes:hover, .Hot-Penning:hover, .diary:hover {
+            transform: translateY(-5px); 
+        }
+        .module h2, .survey h2, .daily-quotes h2, .Hot-Penning h2, .diary h2 {
+            margin-top: 0;
+            padding-bottom: 10px; 
+            border-bottom: 2px solid #4aa3df; 
+            font-size: 20px;
+        }
+        .module p, .survey p, .daily-quotes p, .Hot-Penning p, .diary p {
+            font-size: 16px; 
+            line-height: 1.6; 
+        }
+        .module a, .survey a, .daily-quotes a, .Hot-Penning a, .diary a {
+            color: #4aa3df;
+            text-decoration: none;
+            transition: color 0.3s; 
+        }
+        .module a:hover, .survey a:hover, .daily-quotes a:hover, .Hot-Penning a:hover, .diary a:hover {
+            color: #ffcc00; 
+        }
+        footer {
+            background-color: #4aa3df; 
+            color: #fff;
+            text-align: center;
+            padding: 1px; 
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Health Hub</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="daily-quotes">
+            <h2><a href="http://127.0.0.1:5500/quotes.html" target="_blank">Daily Quotes</a></h2>
+            <p>Here's a quote to brighten your day:</p>
+            <blockquote>"You are braver than you believe, stronger than you seem, and smarter than you think." - A.A. Milne</blockquote>
+        </div>
+        <div class="Hot-Penning">
+            <h2><a href="https://www.example.com/topics" target="_blank">Hot Penning</a></h2>
+            <p>Stay informed about the latest topics and discussions related to mental health.</p>
+        </div>
+        <div class="survey">
+            <h2><a href="http://127.0.0.1:5500/Survey.html" target="_blank">Survey</a></h2>
+            <p>Please take a moment to fill out our survey and help us improve our services.</p>
+        </div>
+        <div class="diary">
+            <h2><a href="https://drive.google.com/file/d/1ww5HJYl1Jkov4d-avb5GdvnOLEGCT88C/view?usp=sharing" target="_blank">Diary</a></h2>
+            <p>Share your thoughts and experiences in our supportive community diary.</p>
+        </div>
+        <div class="module">
+            <h2><a href="http://127.0.0.1:5500/Module.html" target="_blank">Module</a></h2>
+            <p>Welcome to the Mental Health Hub. Here you'll find resources and support for your mental well-being.</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Health Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Survey</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #89f7fe, #66a6ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .survey-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        p {
+            margin-bottom: 2rem;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .emoji-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1.5rem;
+        }
+
+        .emoji {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .emoji:hover {
+            transform: scale(1.2);
+        }
+
+        .mood-message {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="survey-container">
+        <h1>How are you feeling today?</h1>
+        <div class="emoji-container">
+            <div class="emoji" onclick="selectMood('happy')">😊</div>
+            <div class="emoji" onclick="selectMood('sad')">😢</div>
+            <div class="emoji" onclick="selectMood('angry')">😡</div>
+            <div class="emoji" onclick="selectMood('surprised')">😲</div>
+            <div class="emoji" onclick="selectMood('confused')">😕</div>
+        </div>
+        <div id="mood-message" class="mood-message"></div>
+    </div>
+    <script>
+        function selectMood(mood) {
+            const message = document.getElementById('mood-message');
+            let moodMessage = '';
+
+            switch (mood) {
+                case 'happy':
+                    moodMessage = 'Glad to see you happy! 😊';
+                    break;
+                case 'sad':
+                    moodMessage = 'Sorry that you are feeling sad. 😢';
+                    break;
+                case 'angry':
+                    moodMessage = 'Take a deep breath, it will be okay. 😡';
+                    break;
+                case 'surprised':
+                    moodMessage = 'Wow, something surprised you! 😲';
+                    break;
+                case 'confused':
+                    moodMessage = 'It’s okay to feel confused sometimes. 😕';
+                    break;
+                default:
+                    moodMessage = '';
+            }
+
+            message.textContent = moodMessage;
+        }
+    </script>
+</body>
+</html>
